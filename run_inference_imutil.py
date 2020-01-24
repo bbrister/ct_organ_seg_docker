@@ -1,5 +1,8 @@
 import sys
+import os
 import numpy as np
+
+import nibabel as nib
 
 from pySift3D import imutil
 
@@ -29,8 +32,23 @@ try:
 except IndexError:
     class_idx = None
 
-# Read the image
-im, units = imutil.im_read(image_path)
+# Check if the image is Nifti. If so, use nibabel. Otherwise use imutil
+isNifti = image_path.endswith('.nii') or image_path.endswith('.nii.gz')
+if isNifti:
+        print("Detected Nifti input. The output will have the same header.")
+        if input_copy_path is not None:
+                print("input_copy_path %s will NOT be used" % input_copy_path)
+                input_copy_path = None
+
+        # Read the image with nibabel
+        im, units, nii = inference.read_nifti(image_path)
+
+else:
+        print("Detected non-Nifti input. The output will be copied to the path")
+
+        # Read the image with imutil
+        im, units = imutil.im_read(image_path)
+        nii = None
 
 # Ensure the image is single-channel
 channelAxis = 3
@@ -39,10 +57,12 @@ if len(im.shape) >= channelAxis + 1 and im.shape[channelAxis] is not 1:
                 im.shape[channelAxis]))
 
 # Strip the extra channel
-im = np.squeeze(im, axis=channelAxis)
+if len(im.shape) > channelAxis:
+        im = np.squeeze(im, axis=channelAxis)
 
 # Run inference
 inference.inference_main_with_image(pb_path, params_path, im, units, nii_out_path,
+        nii=nii, # possibly None
         resolution=resolution,
         class_idx=class_idx)
 
