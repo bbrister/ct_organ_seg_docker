@@ -1,0 +1,5 @@
+Copyright (c) 2019-2020 Blaine Rister
+
+This software is free for non-commerical use, distribution and modification. It is not free for commercial activity. For commerical use, please contact Blaine Rister at blaine@stanford.edu.
+
+There is no warranty of any kind.
