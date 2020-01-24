@@ -1,3 +1,3 @@
 *.params.pkl
 *.pb
-shared/*
+# shared/ has its own .gitignore
