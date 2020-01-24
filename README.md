@@ -1,8 +1,14 @@
-INSTRUCTIONS
+INFORMATION
 
-The prebuilt Docker container is available on [DockerHub](https://hub.docker.com/repository/docker/bbrister/organ_seg).
+This repo is for running a pre-trained model for CT organ segmentation.
 
-This repo builds the Docker image, but it currently lacks some of the larger binary files. Those are in the prebuilt container.
+This repo builds the Docker image, but it currently lacks some of the larger binary files. Those are in the prebuilt container which is on [DockerHub](https://hub.docker.com/repository/docker/bbrister/organ_seg).
+
+INSTALLATION
+
+Simply download or clone this repository. The scripts will automatically clone the Docker container when they're first used.
+
+USAGE
 
 Steps to run inference:
 
@@ -22,4 +28,4 @@ For example, if your data is in the directory 'shared/dicom', then run:
 When it's finished, you should have:
         - shared/labels.nii (the segmentation)
         - shared/dicom-COPY.nii (for visualization)
-        
+       
