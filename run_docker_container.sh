@@ -10,7 +10,7 @@ USER=bbrister
 REPO=organ_seg
 
 # Tag name
-TAG="version1.1"
+TAG="version1.2"
 
 # Image name
 IMAGE=$USER/$REPO:$TAG
