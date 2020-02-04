@@ -31,8 +31,8 @@ WORKDIR /home/
 # Install CTH_seg_inference
 RUN git clone -b master --single-branch --recurse-submodules https://github.com/bbrister/CTH_seg_inference.git
 WORKDIR /home/models
-ADD CT_Organ_3mm_extended_Unet_multi.params.pkl .
-ADD CT_Organ_3mm_extended_Unet_multi.pb .
+ADD params.pkl .
+ADD model.pb .
 WORKDIR /home
 
 # Install the docker entrypoint scripts

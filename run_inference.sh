@@ -6,8 +6,8 @@ echo "Container received input path $1"
 echo "Container received output path $2"
 
 MODELDIR=models
-PB_PATH=$MODELDIR/CT_Organ_3mm_extended_Unet_multi.pb
-PARAMS_PATH=$MODELDIR/CT_Organ_3mm_extended_Unet_multi.params.pkl
+PB_PATH=$MODELDIR/model.pb
+PARAMS_PATH=$MODELDIR/params.pkl
 PROG="python -B"
 SCRIPT=run_inference_imutil.py
 RESOLUTION=3
